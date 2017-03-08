@@ -12,7 +12,7 @@ module Api
 					render json: @book, status: 201
 				else
 					render json: { errors: @book.errors.full_messages }, status: 422
-			end
+				end
 
 			end
 
