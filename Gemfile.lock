@@ -43,6 +43,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    apipie-rails (0.3.7)
+      json
     arel (7.1.4)
     builder (3.2.3)
     byebug (9.0.6)
@@ -50,10 +52,13 @@ GEM
       activesupport
     concurrent-ruby (1.0.5)
     erubis (2.7.0)
+    faker (1.7.3)
+      i18n (~> 0.5)
     ffi (1.9.17)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.8.1)
+    json (2.0.3)
     jsonapi (0.1.1.beta6)
       jsonapi-parser (= 0.1.1.beta3)
       jsonapi-renderer (= 0.1.1.beta1)
@@ -133,7 +138,9 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
+  apipie-rails
   byebug
+  faker
   listen (~> 3.0.5)
   puma (~> 3.0)
   rack-cors
