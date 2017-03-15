@@ -26,7 +26,7 @@ module BooksDoc
       curl -v localhost:3000/api/v1/books
     EOS
   param_group :main_params
-  def create; end
+  def create; end 
 
   api :GET, '/books/:id', 'Show Book'
   description <<-EOS
