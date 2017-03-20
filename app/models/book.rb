@@ -1,4 +1,4 @@
 class Book < ApplicationRecord
-	validates :text, :autor, presence: true
+	validates :text, :autor, :pages, :available, presence: true
 end
 
