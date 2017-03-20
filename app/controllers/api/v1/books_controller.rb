@@ -24,7 +24,7 @@ module Api
 
 			def destroy
 				@book.destroy
-				render :show, status: :ok
+				render :show, status: 204
 			end
 
 			private
