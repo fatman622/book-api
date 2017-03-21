@@ -32,7 +32,7 @@ module BooksDoc
   description <<-EOS
     == Show single book
     Is used for show single book
-      curl -v localhost:5000/api/v1/books/31
+      curl -v localhost:5000/api/v1/books/34
     EOS
   param :id, Integer, desc: 'Id book for show. '
   def show; end

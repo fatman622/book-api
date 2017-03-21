@@ -6,7 +6,11 @@ module Api
 			before_action :set_book, only: [:show, :destroy]
 			
 			def index
-				render json: Book.all
+				@books = Book.all
+				@books = @books.autor(params[:autor]) if params[:autor].present?
+				@books = @books.most_recent(5)
+				@books = @books.available
+				render json: @books
 			end
 
 			def create
@@ -28,7 +32,7 @@ module Api
 			end
 
 			private
-			
+
 			def set_book
 				@book = Book.find(params[:id])
 			end
