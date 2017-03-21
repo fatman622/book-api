@@ -9,11 +9,11 @@ book_list = [
   [ "Oleg", "My Text", true, 23]
 ]
 
-5.times do
+100.times do
   autor = Faker::Name.first_name
   text = Faker::Name.last_name
-  available = false
-  pages = Faker::Number.number(4)
+  available = rand(2) == 1 ? true : false
+  pages = Faker::Number.between(1,4)
   book_list << [ autor, text, available, pages]
  end
 
