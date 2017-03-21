@@ -6,17 +6,10 @@ module Api
 			before_action :set_book, only: [:show, :destroy]
 			
 			def index
-				@books = Book.where(nil)
-				
-				if params.has_key?(:available)
-					@books = @books.available
-				end
-				if params.has_key?(:autor)
-					@books = @books.autor(params[:autor]) if params[:autor].present?
-				end
-				if params.has_key?(:most_recent)
-					@books = @books.most_recent(5)
-				end
+				@books = Book.all
+				@books = @books.available if params[:available].present?
+				@books = @books.autor(params[:autor]) if params[:autor].present?
+				@books = @books.most_recent(5).present?
 				render json: @books
 			end
 
