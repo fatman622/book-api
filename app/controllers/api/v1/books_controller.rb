@@ -7,7 +7,7 @@ module Api
 			
 			def index
 				@books = Book.all
-				@books = @books.available if params[:available]
+				@books = @books.available
 				@books = @books.autor(params[:autor]) if params[:autor].present?
 				@books = @books.most_recent(5) if params[:available].present?
 				render json: @books
