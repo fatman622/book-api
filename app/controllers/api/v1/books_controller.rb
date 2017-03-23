@@ -7,8 +7,12 @@ module Api
 			
 			def index
 				@books = Book.all
+				# @books = @books.all_params(params[:author], params[:available])
+				# byebug
 				@books = @books.author(params[:author]) if params[:author].present?
+				# byebug
 				@books = @books.available if params[:available].present?
+				# byebug
 				render json: @books
 			end
 

@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 book_list = [
-  [ "Oleg", "My Text", true, 23]
+  [ "Oleg", "My Text", true, 23],
+  [ "Oleg", "My Te2", true, 23],
+  [ "Oleg", "My Te2", false, 23]
 ]
 
 100.times do
