@@ -7,7 +7,7 @@ module Api
 			
 			def index
 				@books = Book.all
-				@books = @books.available.autor(params[:autor]) if params[:autor].present?
+				@books = @books.available.autor(params[:autor]) if params[:autor].present? and params[:available].present?
 				# @books = @books.autor(params[:autor]) if params[:autor].present?
 				# @books = @books.available if params[:available].present?
 				# byebug
