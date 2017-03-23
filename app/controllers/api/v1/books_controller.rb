@@ -9,7 +9,7 @@ module Api
 				@books = Book.all
 				@books = @books.available if params[:available].present?
 				@books = @books.autor(params[:autor]) if params[:autor].present?
-				@books = @books.most_recent(params[:recent]) if params[:recent].present?
+				@books = @books.most_recent(5) if params[:recent].present?
 				render json: @books
 			end
 
