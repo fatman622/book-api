@@ -3,7 +3,6 @@ class Book < ApplicationRecord
 	validates :available, inclusion: { in: [ true, false ] }
 
 	scope :author, -> (author) { where author: author }
-	scope :available, -> { where available: false }
-	scope :all_params, -> (author, available) { where author: author, available: false }
+	scope :available, -> { where available: true }
 end
 
