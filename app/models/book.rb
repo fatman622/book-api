@@ -4,6 +4,5 @@ class Book < ApplicationRecord
 
 	scope :author, -> (author) { where author: author }
 	scope :available, -> { where available: true }
-	scope :all_params, -> (author, available) { where author: author, available: true }
 end
 
