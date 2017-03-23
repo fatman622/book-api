@@ -1,8 +1,9 @@
 class Book < ApplicationRecord
-	validates :text, :autor, :pages, presence: true
+	validates :text, :author, :pages, presence: true
 	validates :available, inclusion: { in: [ true, false ] }
 
-	scope :autor, -> (autor) { where autor: autor }
+	scope :author, -> (author) { where author: author }
 	scope :available, -> { where available: true }
+	scope :all_params, -> (author, available) { where author: author, available: true }
 end
 

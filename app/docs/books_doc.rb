@@ -2,7 +2,7 @@ module BooksDoc
 	extend Apipie::DSL::Concern
 
 	def_param_group :main_params do
-    param :autor, String, desc: 'The field note author book. '
+    param :author, String, desc: 'The field note author book. '
     param :text, String, desc: 'The text book. '
     param :available, [true, false] , desc: 'Available book.'
     param :pages, Integer, desc: 'The count of pages. '
@@ -23,7 +23,7 @@ module BooksDoc
   description <<-EOS
     == Create Book article
     Is used for creating book
-      curl -v localhost:5000/api/v1/books -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"autor": "Star Wars: A New Hope", "text": "asdasd", "available": "false", "pages": "23"}'
+      curl -v localhost:5000/api/v1/books -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"author": "Star Wars: A New Hope", "text": "asdasd", "available": "false", "pages": "23"}'
     EOS
   param_group :main_params
   def create; end  

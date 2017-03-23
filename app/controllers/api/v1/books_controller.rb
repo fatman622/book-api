@@ -7,9 +7,11 @@ module Api
 			
 			def index
 				@books = Book.all
-				@books = @books.autor(params[:autor]) if params[:autor].present?
+				# @books = @books.all_params(params[:author], params[:available])
+				# byebug
+				@books = @books.author(params[:author]) if params[:author].present?
+				# byebug
 				@books = @books.available if params[:available].present?
-				# @books = @books.available.autor(params[:autor]) if params[:autor].present? && params[:available].present?
 				# byebug
 				render json: @books
 			end
@@ -39,7 +41,7 @@ module Api
 			end
 
 			def book_params
-				params.permit :autor, :text, :available, :pages
+				params.permit :author, :text, :available, :pages
 			end
 		end
 	end

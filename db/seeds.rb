@@ -10,13 +10,13 @@ book_list = [
 ]
 
 100.times do
-  autor = Faker::Name.first_name
+  author = Faker::Name.first_name
   text = Faker::Name.last_name
   available = rand(2) == 1 ? true : false
   pages = Faker::Number.between(1,4)
-  book_list << [ autor, text, available, pages]
+  book_list << [ author, text, available, pages]
  end
 
-book_list.each do |autor, text, available, pages|
-  Book.create(autor: autor, text: text, available: available,  pages: pages)
+book_list.each do |author, text, available, pages|
+  Book.create(author: author, text: text, available: available,  pages: pages)
 end

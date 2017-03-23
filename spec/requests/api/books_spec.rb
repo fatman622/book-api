@@ -42,7 +42,7 @@ RSpec.describe 'Books API', type: :request do
   # Test suite for POST /books
   describe 'POST /books' do
     # valid payload
-    let(:valid_attributes) { { text: 'Learn Elm', autor: 'Oleg', available: true, pages: '3',  } }
+    let(:valid_attributes) { { text: 'Learn Elm', author: 'Oleg', available: true, pages: '3',  } }
 
     context 'when the request is valid' do
       before { post '/api/v1/books', params: valid_attributes }
