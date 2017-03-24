@@ -11,7 +11,7 @@ module Api
 				# byebug
 				@books = @books.author(params[:author]) if params[:author].present?
 				# byebug
-				@books = @books.available if params[:available].present?
+				@books = @books.available if params[:available] == true
 				# byebug
 				render json: @books
 			end
