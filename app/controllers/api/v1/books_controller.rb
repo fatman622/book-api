@@ -7,7 +7,7 @@ module Api
 			
 			def index
 				@books = Book.all
-				@books = @books.author(params[:author]) if params[:author].present?
+				@books = @books.author(params[:author].downcase) if params[:author].present?
 				@books = @books.available(params[:available]) if params[:available].present?
 				render json: @books
 			end
