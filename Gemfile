@@ -16,6 +16,11 @@ gem 'jquery-rails'
 gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
 
+# group :production do
+# gem 'rails_12factor' #this is a gem Heroku also asks you to have as part of your Gemfile
+# gem 'bonsai-elasticsearch-rails'
+# end
+
 
 group :development, :test do
   gem 'byebug', platform: :mri
