@@ -8,18 +8,23 @@ module BooksDoc
     param :pages, Integer, desc: 'The count of pages. '
   end
 
-  api :GET, 'https://book-api-fatman622.herokuapp.com/api/v1/books', 'All books '
+  api :GET, '/books', 'All books '
   description <<-EOS
     == Get Action Books
-    Is used for get all books
-      curl localhost:5000/api/v1/books
+    Is used for show books
+      Is used for get all books
+        curl localhost:5000/api/v1/books
+      Is used for get books by name and/or available with scope
+        curl -v localhost:5000/api/v1/books -X GET -H "Accept: application/json" -H "Content-Type: application/json" -d '{"author": "Oleg", "available": true}'
+      Is used for get books by all filelds with elasticsearch
+        curl -v localhost:5000/api/v1/books/search -X GET -H "Accept: application/json" -H "Content-Type: application/json" -d '{"q": "Pollich"}'
     EOS
   param_group :main_params
   param :created_at, Date, desc: 'Created at'
   param :updated_at, Date, desc: 'Updated at'
   def index; end
 
-  api :POST, 'https://book-api-fatman622.herokuapp.com/api/v1/books', 'Create Book'
+  api :POST, '/books', 'Create Book'
   description <<-EOS
     == Create Book article
     Is used for creating book
@@ -28,7 +33,7 @@ module BooksDoc
   param_group :main_params
   def create; end  
 
-  api :GET, 'https://book-api-fatman622.herokuapp.com/api/v1/books/:id', 'Show Book'
+  api :GET, '/books/:id', 'Show Book'
   description <<-EOS
     == Show single book
     Is used for show single book
@@ -37,7 +42,7 @@ module BooksDoc
   param :id, Integer, desc: 'Id book for show. '
   def show; end
 
-  api :DELETE, 'https://book-api-fatman622.herokuapp.com/api/v1/books/:id', 'Delete Book'
+  api :DELETE, '/books/:id', 'Delete Book'
 	description <<-EOS
 	  == Delete single book
 	  Is used for delete single book
