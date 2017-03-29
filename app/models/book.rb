@@ -1,4 +1,4 @@
-require 'elasticsearch/model'
+# require 'elasticsearch/model'
 
 class Book < ApplicationRecord
 	# include Elasticsearch::Model
