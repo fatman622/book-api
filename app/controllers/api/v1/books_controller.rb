@@ -30,14 +30,14 @@ module Api
 				render :show, status: 204
 			end
 
-			# def search
-			#   if params[:q].nil?
-			#     @books = []
-			#   else
-			#     @books = Book.search params[:q]
-			#   end
-			#   render json: @books, staus: 200
-			# end
+			def search
+			  if params[:q].nil?
+			    @books = []
+			  else
+			    @books = Book.search params[:q]
+			  end
+			  render json: @books, staus: 200
+			end
 
 			private
 
