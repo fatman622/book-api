@@ -46,9 +46,6 @@ GEM
     apipie-rails (0.3.7)
       json
     arel (7.1.4)
-    bonsai-elasticsearch-rails (0.2.0)
-      elasticsearch-model (~> 0)
-      elasticsearch-rails (~> 0)
     builder (3.2.3)
     byebug (9.0.6)
     case_transform (0.2)
@@ -191,7 +188,6 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   apipie-rails
-  bonsai-elasticsearch-rails
   byebug
   database_cleaner
   elasticsearch-model
