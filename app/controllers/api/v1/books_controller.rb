@@ -36,7 +36,7 @@ module Api
 			  else
 			    @books = Book.search params[:q]
 			  end
-			  render json: @books, staus: 201
+			  render json: @books, staus: 200
 			end
 
 			private

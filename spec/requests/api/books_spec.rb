@@ -75,4 +75,14 @@ RSpec.describe 'Books API', type: :request do
     end
   end
 
+  # Test suite for SEARCH for GET /books/search
+  describe 'GET /books/search' do
+    before { get '/api/v1/books/search', parmas: {q: 'Oleg'} }
+
+    it 'returns status code 200' do
+      expect(response).to have_http_status(200)
+    end
+  end
+
+
 end
