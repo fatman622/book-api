@@ -159,10 +159,6 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    searchkick (2.2.0)
-      activemodel (>= 4.1)
-      elasticsearch (>= 1)
-      hashie
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
     spring (2.0.1)
@@ -205,7 +201,6 @@ DEPENDENCIES
   rack-cors
   rails (~> 5.0.2)
   rspec-rails (~> 3.5)
-  searchkick
   shoulda-matchers (~> 3.1)
   spring
   spring-watcher-listen (~> 2.0.0)
