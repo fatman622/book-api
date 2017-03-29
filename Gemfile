@@ -12,9 +12,9 @@ gem 'faker'
 gem 'apipie-rails'
 gem 'rack-cors'
 gem 'active_model_serializers', '~> 0.10.0'
-# gem 'jquery-rails'
-# gem 'elasticsearch-rails'
-# gem 'elasticsearch-model'
+gem 'jquery-rails'
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
 
 
 group :development, :test do
