@@ -11,5 +11,4 @@ class Book < ApplicationRecord
 	scope :available, -> (available) { where available: available }
 end
 Book.import force: true
-# Book.import
 
