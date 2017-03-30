@@ -1,6 +1,7 @@
-# require 'elasticsearch/model'
+require 'elasticsearch/model'
 
 class Book < ApplicationRecord
+	Elasticsearch::Model.client = Elasticsearch::Client.new url: ENV['BONSAI_URL'], log: true
 	include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 	validates :text, :author, :pages, presence: true
