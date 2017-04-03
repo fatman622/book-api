@@ -18,6 +18,14 @@ class Book < ApplicationRecord
           query: query,
           fields: ['text^10', 'author']
         }
+      },
+      highlight: {
+        pre_tags: ['<em>'],
+        post_tags: ['</em>'],
+        fields: {
+          text: {},
+          author: {}
+        }
       }
     }
   )
