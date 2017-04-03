@@ -31,10 +31,10 @@ module Api
 			end
 
 			def search
-			  if params[:q].nil?
+			  if params[:query].nil?
 			    @books = []
 			  else
-			    @books = Book.search params[:q]
+			    @books = Book.search params[:query]
 			  end
 			  render json: @books, staus: 200
 			end

@@ -17,8 +17,8 @@ gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
 
 group :production do
-gem 'rails_12factor'
-gem 'bonsai-elasticsearch-rails'
+  gem 'rails_12factor'
+  gem 'bonsai-elasticsearch-rails'
 end
 
 
