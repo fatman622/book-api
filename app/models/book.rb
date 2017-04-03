@@ -19,7 +19,6 @@ class Book < ApplicationRecord
 	          fields: ['text^10', 'author']
 	        }
 	      }
-	      filter :range, available: true
 	    }
 	  )
 	end
