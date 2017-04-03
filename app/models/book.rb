@@ -9,6 +9,19 @@ class Book < ApplicationRecord
 
 	scope :author, lambda {|author| where("LOWER(author) like ?", "#{author}%")}
 	scope :available, -> (available) { where available: available }
+
+	def self.search(query)
+  __elasticsearch__.search(
+    {
+      query: {
+        multi_match: {
+          query: query,
+          fields: ['text^10', 'author']
+        }
+      }
+    }
+  )
+end
 end
 Book.import force: true
 
