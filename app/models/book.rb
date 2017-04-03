@@ -11,17 +11,18 @@ class Book < ApplicationRecord
 	scope :available, -> (available) { where available: available }
 
 	def self.search(query)
-  __elasticsearch__.search(
-    {
-      query: {
-        multi_match: {
-          query: query,
-          fields: ['text^10', 'author']
-        }
-      }
-    }
-  )
-end
+	  __elasticsearch__.search(
+	    {
+	      query: {
+	        multi_match: {
+	          query: query,
+	          fields: ['text^10', 'author']
+	        }
+	      }
+	      filter :range, available: true
+	    }
+	  )
+	end
 end
 Book.import force: true
 
