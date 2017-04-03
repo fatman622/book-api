@@ -17,7 +17,7 @@ module BooksDoc
       Is used for get books by name and/or available with scope
         curl -v localhost:5000/api/v1/books -X GET -H "Accept: application/json" -H "Content-Type: application/json" -d '{"author": "Oleg", "available": true}'
       Is used for get books by all filelds with elasticsearch
-        curl -v localhost:5000/api/v1/books/search -X GET -H "Accept: application/json" -H "Content-Type: application/json" -d '{"q": "Oleg"}'
+        curl -v localhost:5000/api/v1/books/search -X GET -H "Accept: application/json" -H "Content-Type: application/json" -d '{"query": "Oleg"}'
     EOS
   param_group :main_params
   param :created_at, Date, desc: 'Created at'
