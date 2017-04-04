@@ -5,7 +5,7 @@ module ElasticMyAnalyzer
         mynGram: {
           type: 'ngram',
           min_gram: 1,
-          max_gram: 4
+          max_gram: 3
         }
       },
       analyzer: {
