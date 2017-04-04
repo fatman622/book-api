@@ -20,15 +20,25 @@ class Book < ApplicationRecord
 
 	def self.search(query)
 	  __elasticsearch__.search(
-	    {
-	      query: {
-	        multi_match: {
-	          query: query,
-	          fields: ['text^10', 'author']
-	        }
-	      }
-	    }
-	    
+	   
+	     {
+      query: {
+        bool: {
+          must: {
+            multi_match: {
+              query: query,
+              fields: %w(text author),
+              operator: 'and'
+            }
+          },
+          filter: [
+            {
+              term: { searching: true }
+            }
+          ]
+        }
+      }
+    }
 	  )
 	end
 end
