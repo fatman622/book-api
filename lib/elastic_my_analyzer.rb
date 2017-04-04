@@ -2,6 +2,10 @@ module ElasticMyAnalyzer
   ES_SETTING = {
     analysis: {
       filter: {
+        my_stopwords: {
+          type: 'stop',
+          stopwords: 'and'
+        },
         mynGram: {
           type: 'ngram',
           min_gram: 1,
@@ -13,7 +17,7 @@ module ElasticMyAnalyzer
           type: 'custom',
           tokenizer: 'standard',
           filter: [
-            'lowercase','mynGram'
+            'lowercase','mynGram','my_stopwords'
           ]
         }
       }
