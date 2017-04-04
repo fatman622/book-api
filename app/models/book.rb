@@ -5,6 +5,7 @@ class Book < ApplicationRecord
 	include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   include ElasticMyAnalyzer
+
 	validates :text, :author, :pages, presence: true
 	validates :available, inclusion: { in: [ true, false ] }
 
@@ -31,5 +32,6 @@ class Book < ApplicationRecord
 	  )
 	end
 end
+
 Book.import force: true
 

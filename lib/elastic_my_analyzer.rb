@@ -1,10 +1,13 @@
 module ElasticMyAnalyzer
   ES_SETTING = {
+     index: {
+      number_of_shards: 3
+    },
     analysis: {
       filter: {
         my_stopwords: {
           type: 'stop',
-          stopwords: 'and, is, the'
+          stopwords: ['and, is, the']
         },
         mynGram: {
           type: 'ngram',
