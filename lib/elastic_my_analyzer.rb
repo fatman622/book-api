@@ -4,7 +4,7 @@ module ElasticMyAnalyzer
       filter: {
         my_stopwords: {
           type: 'stop',
-          stopwords: 'and'
+          stopwords: ['and, is, the']
         },
         mynGram: {
           type: 'ngram',
