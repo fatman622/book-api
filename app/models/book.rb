@@ -14,31 +14,20 @@ class Book < ApplicationRecord
 	settings ES_SETTING do
     mappings dynamic: 'true' do
       indexes :text, type: 'string', analyzer: 'my_analyzer'
-      indexes :author, type: 'string', analyzer: 'my_analyzer'
+      # indexes :author, type: 'string', analyzer: 'my_analyzer'
     end
   end
 
 	def self.search(query)
 	  __elasticsearch__.search(
-	   
-	     {
-      query: {
-        bool: {
-          must: {
-            multi_match: {
-              query: query,
-              fields: %w(text author),
-              operator: 'and'
-            }
-          },
-          filter: [
-            {
-              term: { searching: true }
-            }
-          ]
-        }
-      }
-    }
+	    {
+	      query: {
+	        multi_match: {
+	          query: query,
+	          fields: ['text^10']
+	        }
+	      }
+	    }
 	  )
 	end
 end

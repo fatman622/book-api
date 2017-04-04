@@ -1,14 +1,11 @@
 module ElasticMyAnalyzer
   ES_SETTING = {
-    index: {
-      number_of_shards: 1
-    },
     analysis: {
       filter: {
         mynGram: {
           type: 'ngram',
-          min_gram: 1,
-          max_gram: 4
+          min_gram: 4,
+          max_gram: 8
         }
       },
       analyzer: {
