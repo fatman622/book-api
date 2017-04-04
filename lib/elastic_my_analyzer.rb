@@ -13,7 +13,7 @@ module ElasticMyAnalyzer
           type: 'custom',
           tokenizer: 'standard',
           filter: [
-            'mynGram'
+            'lowercase','mynGram'
           ]
         }
       }
