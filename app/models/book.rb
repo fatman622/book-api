@@ -14,7 +14,7 @@ class Book < ApplicationRecord
 	settings ES_SETTING do
     mappings dynamic: 'true' do
       indexes :text, type: 'string', analyzer: 'my_analyzer'
-      # indexes :author, type: 'string', analyzer: 'my_analyzer'
+      indexes :author, type: 'string', analyzer: 'my_analyzer'
     end
   end
 
@@ -24,7 +24,7 @@ class Book < ApplicationRecord
 	      query: {
 	        multi_match: {
 	          query: query,
-	          fields: ['text^10']
+	          fields: ['text^10', 'author']
 	        }
 	      }
 	    }
