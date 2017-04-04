@@ -1,7 +1,7 @@
 module ElasticMyAnalyzer
   ES_SETTING = {
      index: {
-      number_of_shards: 3
+      number_of_shards: 100
     },
     analysis: {
       filter: {
