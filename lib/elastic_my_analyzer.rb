@@ -1,5 +1,8 @@
 module ElasticMyAnalyzer
   ES_SETTING = {
+     index: {
+      number_of_shards: 1
+    },
     analysis: {
       filter: {
         my_stopwords: {
