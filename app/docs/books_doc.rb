@@ -18,6 +18,8 @@ module BooksDoc
         curl -v localhost:5000/api/v1/books -X GET -H "Accept: application/json" -H "Content-Type: application/json" -d '{"author": "Oleg", "available": true}'
       Is used for get books by all filelds with elasticsearch
         curl -v localhost:5000/api/v1/books/search -X GET -H "Accept: application/json" -H "Content-Type: application/json" -d '{"query": "Oleg"}'
+        curl POST localhost:5000/api/v1/auth --data "email=olegbabiy.ob@gmail.com&password=123456789&password_confirmation=123456789&first_name=John&last_name=Smith"
+
     EOS
   param_group :main_params
   param :created_at, Date, desc: 'Created at'

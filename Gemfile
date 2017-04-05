@@ -15,6 +15,8 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'jquery-rails'
 gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
+gem 'devise_token_auth'
+gem 'omniauth'
 
 group :production do
   gem 'rails_12factor'
