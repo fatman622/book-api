@@ -2,7 +2,7 @@ module Api
 	module V1
 		class BooksController < ApplicationController
 			include BooksDoc
-			before_action :authenticate_user!
+			# before_action :authenticate_user!
 			before_action :set_book, only: [:show, :destroy]
 			
 			def index
