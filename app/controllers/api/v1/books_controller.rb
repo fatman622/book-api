@@ -2,6 +2,7 @@ module Api
 	module V1
 		class BooksController < ApplicationController
 			include BooksDoc
+			include DeviseTokenAuth::Concerns::SetUserByToken
 			before_action :authenticate_user!
 			before_action :set_book, only: [:show, :destroy]
 			
