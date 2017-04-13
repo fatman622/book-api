@@ -3,11 +3,23 @@ require 'rails_helper'
 RSpec.describe 'Books API', type: :request do
 	let!(:books) { create_list(:book, 10) }
   let(:book_id) { books.first.id }
-
+  let(:valid_attributes_registry) { {"email": "olegbabyd@gmail.com", "password": "123456789", "password_confirmation": "123456789", "first_name": "John", "last_name": "Smith" } }
+  let(:auth_headers) {
+    { 
+      "access-token": response.headers['access-token'],
+      "token-type":   response.headers['token-type'],
+      "client":       response.headers['client'],
+      "expiry":       response.headers['expiry'],
+      "uid":          response.headers['uid'] 
+    }
+  }
     # Test suite for GET /books
-  describe 'GET /api/v1/books ' do
-    # make HTTP get request before each example
-    before { get '/api/v1/books' }
+  describe 'GET /api/v1/books' do
+
+    before {
+      post '/api/v1/auth', params: valid_attributes_registry
+      get '/api/v1/books', headers: auth_headers
+    }
 
     it 'returns books' do
     	json = JSON.parse(response.body)
@@ -23,7 +35,10 @@ RSpec.describe 'Books API', type: :request do
 
     # Test suite for GET /books/:id
   describe 'GET /books/:id' do
-    before { get "/api/v1/books/#{book_id}" }
+    before {
+      post '/api/v1/auth', params: valid_attributes_registry
+      get "/api/v1/books/#{book_id}", headers: auth_headers 
+    }
 
     context 'when the record exists' do
       it 'returns the book' do
@@ -45,7 +60,10 @@ RSpec.describe 'Books API', type: :request do
     let(:valid_attributes) { { text: 'Learn Elm', author: 'Oleg', available: true, pages: '3',  } }
 
     context 'when the request is valid' do
-      before { post '/api/v1/books', params: valid_attributes }
+      before {
+        post '/api/v1/auth', params: valid_attributes_registry
+        post '/api/v1/books', params: valid_attributes, headers: auth_headers 
+      }
 
       it 'creates a book' do
       	json = JSON.parse(response.body)
@@ -58,7 +76,10 @@ RSpec.describe 'Books API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/api/v1/books', params: { text: 'Foobar' } }
+      before {
+        post '/api/v1/auth', params: valid_attributes_registry
+        post '/api/v1/books', params: { text: 'Foobar' }, headers: auth_headers 
+      }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -68,7 +89,10 @@ RSpec.describe 'Books API', type: :request do
 
    # Test suite for DELETE /boks/:id
   describe 'DELETE /books/:id' do
-    before { delete "/api/v1/books/#{book_id}" }
+    before {
+      post '/api/v1/auth', params: valid_attributes_registry
+      delete "/api/v1/books/#{book_id}", headers: auth_headers 
+    }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
@@ -77,7 +101,10 @@ RSpec.describe 'Books API', type: :request do
 
   # Test suite for SEARCH for GET /books/search
   describe 'GET /books/search' do
-    before { get '/api/v1/books/search', parmas: {q: 'Oleg'} }
+    before {
+      post '/api/v1/auth', params: valid_attributes_registry
+      get '/api/v1/books/search', headers: auth_headers 
+    }
 
     it 'returns status code 200' do
       expect(response).to have_http_status(200)
