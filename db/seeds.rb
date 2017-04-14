@@ -11,14 +11,28 @@ book_list = [
   [ "Oleg", "My Te2", false, 23]
 ]
 
+readme_list = []
+
+
 100.times do
   author = Faker::Name.first_name
   text = Faker::Name.last_name
   available = rand(2) == 1 ? true : false
   pages = Faker::Number.between(1,4)
   book_list << [ author, text, available, pages]
- end
+end
+
+5.times do
+  text = Faker::Name.last_name
+  readme_list << [ text ]
+end
+
+
 
 book_list.each do |author, text, available, pages|
   Book.create(author: author, text: text, available: available,  pages: pages)
+end
+
+readme_list.each do |text|
+  Readme.create(text: text)
 end

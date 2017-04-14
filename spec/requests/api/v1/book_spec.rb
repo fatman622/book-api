@@ -87,6 +87,38 @@ RSpec.describe 'Books API', type: :request do
     end
   end
 
+   # Test suite for PUT /books
+  describe 'PUT /books/:id' do
+    # valid payload
+    let(:valid_attributes) { { text: 'Learn Elm', author: 'Oleg', available: true, pages: '3',  } }
+
+    context 'when the request is valid' do
+      before {
+        post '/api/v1/auth', params: valid_attributes_registry
+        put '/api/v1/books/1', params: valid_attributes, headers: auth_headers 
+      }
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+
+
+
+
+    # Test suite for Show /boks/:id
+  describe 'GET /books/:id' do
+    before {
+      post '/api/v1/auth', params: valid_attributes_registry
+      get "/api/v1/books/#{book_id}", headers: auth_headers 
+    }
+
+    it 'returns status code 200' do
+      expect(response).to have_http_status(200)
+    end
+  end
+
    # Test suite for DELETE /boks/:id
   describe 'DELETE /books/:id' do
     before {

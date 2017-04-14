@@ -26,6 +26,10 @@ module Api
 				render json: set_book
 			end
 
+			def update
+			  render json: set_book.update(book_params)
+			end
+
 			def destroy
 				@book.destroy
 				render :show, status: 204

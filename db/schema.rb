@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405104510) do
+ActiveRecord::Schema.define(version: 20170414130730) do
 
   create_table "books", force: :cascade do |t|
     t.string   "author"
@@ -19,7 +19,13 @@ ActiveRecord::Schema.define(version: 20170405104510) do
     t.datetime "updated_at", null: false
     t.boolean  "available"
     t.integer  "pages"
-  end 
+  end
+
+  create_table "readmes", force: :cascade do |t|
+    t.string   "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false

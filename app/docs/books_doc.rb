@@ -46,6 +46,15 @@ module BooksDoc
   param :id, Integer, desc: 'Id book for show. '
   def show; end
 
+  api :PUT, '/books/:id', 'Update book'
+    description <<-EOS
+      == Update book article
+      Is used for updating book
+        curl -v localhost:5000/api/v1/books/1 -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -d '{"author": "Star Wars: A New Hope", "text": "asdasd", "available": "false", "pages": "23"}'
+    EOS
+  param_group :main_params
+  def update; end
+
   api :DELETE, '/books/:id', 'Delete Book'
 	description <<-EOS
 	  == Delete single book
