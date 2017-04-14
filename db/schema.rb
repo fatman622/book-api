@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170405104510) do
     t.datetime "updated_at", null: false
     t.boolean  "available"
     t.integer  "pages"
-  end
+  end 
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
