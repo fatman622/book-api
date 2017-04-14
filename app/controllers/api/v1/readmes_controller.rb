@@ -13,7 +13,12 @@ module Api
       end
 
       def create
-        render json: Readme.create(readme_params)
+        @readme = Readme.create(readme_params)
+        if @readme.save
+          render json: @readme, status: 201
+        else
+          render json: { errors: @readme.errors.full_messages }, status: 422
+        end
       end
 
       def update
@@ -21,7 +26,7 @@ module Api
       end
 
       def destroy
-        render json: readme.destroy
+        render json: readme.destroy, status: 204
       end
 
       private
@@ -31,7 +36,7 @@ module Api
       end
 
       def readme_params
-        params.require(:readme).permit(:text)
+        params.permit :text
       end
     end
   end
