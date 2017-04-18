@@ -3,9 +3,9 @@ RSpec.describe 'User API', type: :request do
 	let!(:user) { create_list(:user, 10) }
   let(:user_id) { users.first.id }
    # valid payload
-    let(:valid_attributes) { {"email": "olegbabyd@gmail.com", "password": "123456789", "password_confirmation": "123456789", "first_name": "John", "last_name": "Smith" } }
+    let(:valid_attributes) { {"email": "olegbabyd@gmail.com", "password": "123456789", "password_confirmation": "123456789"} }
     let(:invalid_attributes) { {"email": "olegbabyd@gmail.com", "password": "123456789", "password_confirmation": "1234569"} }
-    let(:valid_attributes_sign_in) { {"email": "olegbabyd@gmail.com", "password": "123456789", "password_confirmation": "123456789", "first_name": "John", "last_name": "Smith" } }
+    let(:valid_attributes_sign_in) { {"email": "olegbabyd@gmail.com", "password": "123456789", "password_confirmation": "123456789"} }
     let(:auth_headers) {
       { 
         "access-token": response.headers['access-token'],

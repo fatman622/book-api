@@ -12,16 +12,16 @@ module BooksDoc
   description <<-EOS
     == Get Action Books
     Is used for show books
+      Is used for auth
+        curl -v localhost:5000/api/v1/auth -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "olegbaby@gmail.com", "password": "123456789", "password_confirmation": "123456789"}'
+        curl -v localhost:5000/api/v1/auth/sign_in -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "olegbaby@gmail.com", "password": "123456789"}'
+        curl -v localhost:5000/api/v1/books -X GET -H 'Content-Type: application/json' -H 'access-token: lM_sZKwvk5yOSwkmsHC-BQ' -H 'client: lvLMUIVaNWrx9nTe1LmYIw' -H "uid: olegbaby@gmail.com"
       Is used for get all books
         curl localhost:5000/api/v1/books -X GET 
       Is used for get books by name and/or available with scope
         curl -v localhost:5000/api/v1/books -X GET -H "Accept: application/json" -H "Content-Type: application/json" -d '{"author": "Oleg", "available": true}'
       Is used for get books by all filelds with elasticsearch
-        curl -v localhost:5000/api/v1/books/search -X GET -H "Accept: application/json" -H "Content-Type: application/json" -d '{"query": "Oleg"}'
-      Is used for auth
-        curl -v localhost:5000/api/v1/auth -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "olegbaby@gmail.com", "password": "123456789", "password_confirmation": "123456789"}'
-        curl -v localhost:5000/api/v1/auth/sign_in -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "olegbaby@gmail.com", "password": "123456789"}'
-        curl -v localhost:5000/api/v1/books -X GET -H 'Content-Type: application/json' -H 'access-token: lM_sZKwvk5yOSwkmsHC-BQ' -H 'client: lvLMUIVaNWrx9nTe1LmYIw' -H "uid: olegbaby@gmail.com"
+        curl -v localhost:5000/api/v1/books/search -X GET -H "Accept: application/json" -H "Content-Type: application/json" -d '{"query": "Oleg"}'    
     EOS
   param_group :main_params
   param :created_at, Date, desc: 'Created at'
