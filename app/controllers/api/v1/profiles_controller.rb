@@ -1,9 +1,9 @@
 module Api
 	module V1
 		class ProfilesController < ApplicationController
-			# include BooksDoc
+			include ProfilesDoc
 			include DeviseTokenAuth::Concerns::SetUserByToken
-			# before_action :authenticate_user!
+			before_action :authenticate_user!
 
 			def index
 				@profiles = Profile.all

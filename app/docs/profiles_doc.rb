@@ -1,4 +1,4 @@
-module BooksDoc
+module ProfilesDoc
 	extend Apipie::DSL::Concern
 
 	def_param_group :main_params do
