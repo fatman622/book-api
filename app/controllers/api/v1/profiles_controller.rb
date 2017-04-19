@@ -15,7 +15,7 @@ module Api
 			end
 
 			def update
-			  @profile = _current_profile.update(profile_params)
+			  @profile = get_profile.update(profile_params)
 				if @profile
 					render json: @profile, status: 201
 				else
