@@ -1,3 +1,6 @@
 class ApplicationController < ActionController::API
-  # include DeviseTokenAuth::Concerns::SetUserByToken
+  private
+	def _current_profile
+		@current_profile = current_user.profile
+	end
 end

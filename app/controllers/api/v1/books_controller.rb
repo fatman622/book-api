@@ -4,13 +4,13 @@ module Api
 			include BooksDoc
 			include DeviseTokenAuth::Concerns::SetUserByToken
 			before_action :authenticate_user!
-			before_action :set_book, only: [:show, :destroy]
+			before_action :get_book, only: [:show, :destroy]
 			
 			def index
 				@books = Book.all
 				@books = @books.author(params[:author].downcase) if params[:author].present?
 				@books = @books.available(params[:available]) if params[:available].present?
-				render json: @books
+				render json: @books, status: 200
 			end
 
 			def create
@@ -23,11 +23,16 @@ module Api
 			end
 
 			def show
-				render json: set_book
+				render json: get_book, status: 200
 			end
 
 			def update
-			  render json: set_book.update(book_params)
+				@book = get_book.update(book_params)
+				if @book
+					render json: @book, status: 201
+				else
+					render json: { errors: @book.errors.full_messages }, status: 422
+				end
 			end
 
 			def destroy
@@ -45,7 +50,7 @@ module Api
 			end
 
 			private
-			def set_book
+			def get_book
 				@book = Book.find(params[:id])
 			end
 

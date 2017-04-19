@@ -7,29 +7,20 @@ module Api
 
 			def index
 				@profiles = Profile.all
-				render json: @profiles
+				render json: @profiles, status: 200
 			end
 
-			def create
-				@profile = Profile.create(profile_params)
-				if @profile.save
+			def show
+				render json: _current_profile, status: 200
+			end
+
+			def update
+			  @profile = _current_profile.update(profile_params)
+				if @profile
 					render json: @profile, status: 201
 				else
 					render json: { errors: @profile.errors.full_messages }, status: 422
 				end
-			end
-
-			def show
-				render json: get_profile
-			end
-
-			def update
-			  render json: get_profile.update(profile_params)
-			end
-
-			def destroy
-				get_profile.destroy
-				render :show, status: 204
 			end
 
 			private

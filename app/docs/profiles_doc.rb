@@ -23,15 +23,6 @@ module ProfilesDoc
   param :updated_at, Date, desc: 'Updated at'
   def index; end
 
-  api :POST, '/profiles', 'Create Profile'
-  description <<-EOS
-    == Create Profile for user
-    Is used for creating profile
-      curl -v localhost:5000/api/v1/profiles -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"first_name": "Star Wars: A New Hope", "last_name": "asdasd"}'
-    EOS
-  param_group :main_params
-  def create; end  
-
   api :GET, '/profiles/:id', 'Show Profile'
   description <<-EOS
     == Show single profile
@@ -49,13 +40,4 @@ module ProfilesDoc
     EOS
   param_group :main_params
   def update; end
-
-  api :DELETE, '/profiles/:id', 'Delete Profile'
-	description <<-EOS
-	  == Delete single profile
-	  Is used for delete single profile
-	    curl -v localhost:5000/api/v1/profiles/1 -X DELETE -H "Accept: application/json" -H "Content-Type: application/json"
-	  EOS
-	param :id, Integer, desc: 'Id profile for delete. '
-	def destroy; end
 end

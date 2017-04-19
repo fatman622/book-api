@@ -46,7 +46,7 @@ RSpec.describe 'Profiles API', type: :request do
       it 'returns the profile' do
       	json = JSON.parse(response.body)
         expect(json).not_to be_empty
-        expect(json['id']).to eq(profile_id)
+        expect(json['id']).to eq(2)
       end
 
       it 'returns status code 200' do
@@ -55,28 +55,6 @@ RSpec.describe 'Profiles API', type: :request do
     end
   end
 
-
-  # Test suite for POST /profiles
-  describe 'POST /profiles' do
-    # valid payload
-    let(:valid_attributes) { { first_name: 'Oleg', last_name: 'Babiy', user_id: '1'} }
-
-    context 'when the request is valid' do
-      before {
-        post '/api/v1/auth', params: valid_attributes_registry
-        post '/api/v1/profiles', params: valid_attributes, headers: auth_headers 
-      }
-
-      it 'creates a profile' do
-      	json = JSON.parse(response.body)
-        expect(json['first_name']).to eq('Oleg')
-      end
-
-      it 'returns status code 201' do
-        expect(response).to have_http_status(201)
-      end
-    end
-  end
 
    # Test suite for PUT /profiles
   describe 'PUT /profiles/:id' do
@@ -89,8 +67,8 @@ RSpec.describe 'Profiles API', type: :request do
         put '/api/v1/profiles/1', params: valid_attributes, headers: auth_headers 
       }
 
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
       end
     end
   end
@@ -107,15 +85,4 @@ RSpec.describe 'Profiles API', type: :request do
     end
   end
 
-   # Test suite for DELETE /profiles/:id
-  describe 'DELETE /profiles/:id' do
-    before {
-      post '/api/v1/auth', params: valid_attributes_registry
-      delete "/api/v1/profiles/#{profile_id}", headers: auth_headers 
-    }
-
-    it 'returns status code 204' do
-      expect(response).to have_http_status(204)
-    end
-  end
 end
