@@ -11,8 +11,7 @@ module Api
 			end
 
 			def show
-
-				render json: _current_profile.find(params[:id]), status: 200
+				render json: get_profile, status: 200
 			end
 
 			def update
