@@ -11,7 +11,7 @@ book_list = [
   [ "Oleg", "My Te2", false, 23]
 ]
 
-readme_list = []
+book_content_list = []
 
 
 100.times do
@@ -24,7 +24,7 @@ end
 
 5.times do
   text = Faker::Name.last_name
-  readme_list << [ text ]
+  book_content_list << [ text ]
 end
 
 
@@ -33,6 +33,6 @@ book_list.each do |author, text, available, pages|
   Book.create(author: author, text: text, available: available,  pages: pages)
 end
 
-readme_list.each do |text|
-  Readme.create(text: text)
+book_content_list.each do |text|
+  BookContent.create(text: text) 
 end

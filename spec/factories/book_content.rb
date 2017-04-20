@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :readme do
+  factory :book_content do
 		text { Faker::Name.last_name }
   end
 end
