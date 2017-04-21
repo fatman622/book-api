@@ -3,7 +3,7 @@ module Api
     class BooksContentsController < ApplicationController
       include BooksContentsDoc
       include DeviseTokenAuth::Concerns::SetUserByToken
-      # before_action :authenticate_user!
+      before_action :authenticate_user!
       # respond_to :json
       
       def index
