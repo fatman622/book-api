@@ -4,22 +4,23 @@ module Api
 			include ProfilesDoc
 			include DeviseTokenAuth::Concerns::SetUserByToken
 			before_action :authenticate_user!
+			# respond_to :json
 
 			def index
 				@profiles = Profile.all
-				render json: @profiles, status: 200
+				respond_with @profiles, status: 200
 			end
 
 			def show
-				render json: _current_profile, status: 200
+				respond_with get_profile, status: 200
 			end
 
 			def update
-			  @profile = get_profile.update(profile_params)
+			  @profile = _current_profile.update(profile_params)
 				if @profile
-					render json: @profile, status: 201
+					respond_with @profile, status: 201
 				else
-					render json: { errors: @profile.errors.full_messages }, status: 422
+					respond_with errors: @book_content.errors.full_messages, status: 422
 				end
 			end
 
@@ -30,6 +31,10 @@ module Api
 
 			def profile_params
 				params.permit :first_name, :last_name, :avatar
+			end
+
+			def _current_profile
+				@current_profile = current_user.profile
 			end
 		end
 	end

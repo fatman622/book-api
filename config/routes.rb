@@ -3,7 +3,7 @@ Rails.application.routes.draw do
  	devise_for :users
   get 'api/v1/books/search', to: 'api/v1/books#search'
  
-	namespace :api do
+	namespace :api, defaults: { format: 'json' } do
 		namespace :v1 do
 			resources :books
 			resources :books_contents

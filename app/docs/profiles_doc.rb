@@ -12,9 +12,9 @@ module ProfilesDoc
     == Get Action Profiles
     Is used for show profiles
       Is used for auth
-        curl -v localhost:5000/api/v1/auth -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "olegbaby@gmail.com", "password": "123456789", "password_confirmation": "123456789"}'
-        curl -v localhost:5000/api/v1/auth/sign_in -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "olegbaby@gmail.com", "password": "123456789"}'
-        curl -v localhost:5000/api/v1/profiles -X GET -H 'Content-Type: application/json' -H 'access-token: lM_sZKwvk5yOSwkmsHC-BQ' -H 'client: lvLMUIVaNWrx9nTe1LmYIw' -H "uid: olegbaby@gmail.com"
+        curl -v localhost:5000/api/v1/auth -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "olegbabiy.ob@gmail.com", "password": "123456789", "password_confirmation": "123456789"}'
+        curl -v localhost:5000/api/v1/auth/sign_in -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "olegbabiy.ob@gmail.com", "password": "123456789"}'
+        curl -v localhost:5000/api/v1/profiles -X GET -H 'Content-Type: application/json' -H 'access-token: lM_sZKwvk5yOSwkmsHC-BQ' -H 'client: lvLMUIVaNWrx9nTe1LmYIw' -H "uid: olegbabiy.ob@gmail.com"
       Is used for get all books
         curl localhost:5000/api/v1/profiles -X GET 
     EOS

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_one :profile
+	has_one :profile, dependent: :destroy
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable

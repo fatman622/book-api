@@ -3,41 +3,42 @@ module Api
 		class BooksController < ApplicationController
 			include BooksDoc
 			include DeviseTokenAuth::Concerns::SetUserByToken
-			before_action :authenticate_user!
+			# before_action :authenticate_user!
 			before_action :get_book, only: [:show, :destroy]
+			respond_to :json
 			
 			def index
 				@books = Book.all
 				@books = @books.author(params[:author].downcase) if params[:author].present?
 				@books = @books.available(params[:available]) if params[:available].present?
-				render json: @books, status: 200
+				respond_with @books, status: :ok
 			end
 
 			def create
 				@book = Book.create(book_params)
 				if @book.save
-					render json: @book, status: 201
+					respond_with @book, status: :created
 				else
-					render json: { errors: @book.errors.full_messages }, status: 422
+					respond_with @book, errors: @book.errors.full_messages, status: :unprocessable_entity
 				end
 			end
 
 			def show
-				render json: get_book, status: 200
+				respond_with get_book, status: :ok
 			end
 
 			def update
 				@book = get_book.update(book_params)
 				if @book
-					render json: @book, status: 201
+					respond_with :api, :v1, status: :created
 				else
-					render json: { errors: @book.errors.full_messages }, status: 422
+					respond_with :api, :v1, errors: @book.errors.full_messages, status: :unprocessable_entity
 				end
 			end
 
 			def destroy
 				@book.destroy
-				render :show, status: 204
+				respond_with :api, :v1, status: :no_content
 			end
 
 			def search
@@ -46,7 +47,7 @@ module Api
 			  else
 			    @books = Book.search params[:query]
 			  end
-			  render json: @books, staus: 200
+			  respond_with @books, staus: :ok
 			end
 
 			private

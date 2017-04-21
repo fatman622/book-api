@@ -13,9 +13,9 @@ module BooksDoc
     == Get Action Books
     Is used for show books
       Is used for auth
-        curl -v localhost:5000/api/v1/auth -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "olegbaby@gmail.com", "password": "123456789", "password_confirmation": "123456789"}'
-        curl -v localhost:5000/api/v1/auth/sign_in -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "olegbaby@gmail.com", "password": "123456789"}'
-        curl -v localhost:5000/api/v1/books -X GET -H 'Content-Type: application/json' -H 'access-token: lM_sZKwvk5yOSwkmsHC-BQ' -H 'client: lvLMUIVaNWrx9nTe1LmYIw' -H "uid: olegbaby@gmail.com"
+        curl -v localhost:5000/api/v1/auth -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "olegbabiy.ob@gmail.com", "password": "123456789", "password_confirmation": "123456789"}'
+        curl -v localhost:5000/api/v1/auth/sign_in -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "olegbabiy.ob@gmail.com", "password": "123456789"}'
+        curl -v localhost:5000/api/v1/books -X GET -H 'Content-Type: application/json' -H 'access-token: lM_sZKwvk5yOSwkmsHC-BQ' -H 'client: lvLMUIVaNWrx9nTe1LmYIw' -H "uid: olegbabiy.ob@gmail.com"
       Is used for get all books
         curl localhost:5000/api/v1/books -X GET 
       Is used for get books by name and/or available with scope
@@ -49,8 +49,8 @@ module BooksDoc
   api :PUT, '/books/:id', 'Update book'
     description <<-EOS
       == Update book article
-      Is used for updating book
-        curl -v localhost:5000/api/v1/books/1 -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -d '{"author": "Star Wars: A New Hope", "text": "asdasd", "available": "false", "pages": "23"}'
+    Is used for updating book
+      curl -v localhost:5000/api/v1/books/1 -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -d '{"author": "Star Wars: A New Hope", "text": "asdasd", "available": "false", "pages": "23"}'
     EOS
   param_group :main_params
   def update; end

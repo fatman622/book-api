@@ -1,6 +1,6 @@
+require "application_responder"
+
 class ApplicationController < ActionController::API
-  private
-	def _current_profile
-		@current_profile = current_user.profile
-	end
+  self.responder = ApplicationResponder
+  respond_to :html, :json
 end

@@ -98,8 +98,8 @@ RSpec.describe 'BookContent API', type: :request do
         put '/api/v1/books_contents/1', params: valid_attributes, headers: auth_headers 
       }
 
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
       end
     end
   end
