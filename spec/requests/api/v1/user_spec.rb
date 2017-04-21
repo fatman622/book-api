@@ -43,8 +43,8 @@ RSpec.describe 'User API', type: :request do
         expect(json['id']).to eq(1)
       end
 
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+      it 'returns status code OK' do
+        expect(response).to have_http_status(:ok)
       end
     end
   end
@@ -63,8 +63,8 @@ RSpec.describe 'User API', type: :request do
       expect(json.size).to eq(11)
     end
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
+    it 'returns status code OK' do
+      expect(response).to have_http_status(:ok)
     end
   end
 
@@ -90,8 +90,8 @@ RSpec.describe 'User API', type: :request do
           put "/api/v1/profiles/#{profile_id}", params: valid_attributes_profile, headers: auth_headers 
         }
 
-        it 'returns status code 204' do
-          expect(response).to have_http_status(204)
+        it 'returns status code NO_CONTENT' do
+          expect(response).to have_http_status(:no_content)
         end
       end
     end
@@ -103,8 +103,8 @@ RSpec.describe 'User API', type: :request do
         get "/api/v1/profiles/#{profile_id}", headers: auth_headers 
       }
 
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+      it 'returns status code OK' do
+        expect(response).to have_http_status(:ok)
       end
     end
   end
@@ -117,7 +117,7 @@ RSpec.describe 'User API', type: :request do
         delete '/api/v1/auth/sign_out', headers: auth_headers 
       }
 
-      it 'returns status code 200' do
+      it 'returns status code OK' do
         expect(response).to have_http_status(200)
       end
     end

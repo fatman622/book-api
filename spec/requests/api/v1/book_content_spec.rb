@@ -28,8 +28,8 @@ RSpec.describe 'BookContent API', type: :request do
       expect(json.size).to eq(10)
     end
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
+    it 'returns status code OK' do
+      expect(response).to have_http_status(:ok)
     end
   end
 
@@ -47,8 +47,8 @@ RSpec.describe 'BookContent API', type: :request do
         expect(json['id']).to eq(book_content_id)
       end
 
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+      it 'returns status code OK' do
+        expect(response).to have_http_status(:ok)
       end
     end
   end
@@ -70,8 +70,8 @@ RSpec.describe 'BookContent API', type: :request do
         expect(json['text']).to eq('Learn')
       end
 
-      it 'returns status code 201' do
-        expect(response).to have_http_status(201)
+      it 'returns status code CREATED' do
+        expect(response).to have_http_status(:created)
       end
     end
 
@@ -81,8 +81,8 @@ RSpec.describe 'BookContent API', type: :request do
         post '/api/v1/books_contents', params: { }, headers: auth_headers 
       }
 
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
+      it 'returns status code Unprocessable_entity' do
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
@@ -98,8 +98,8 @@ RSpec.describe 'BookContent API', type: :request do
         put '/api/v1/books_contents/1', params: valid_attributes, headers: auth_headers 
       }
 
-      it 'returns status code 201' do
-        expect(response).to have_http_status(201)
+      it 'returns status code CREATED' do
+        expect(response).to have_http_status(:created)
       end
     end
   end
@@ -111,8 +111,8 @@ RSpec.describe 'BookContent API', type: :request do
       get "/api/v1/books_contents/#{book_content_id}", headers: auth_headers 
     }
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
+    it 'returns status code ok' do
+      expect(response).to have_http_status(:ok)
     end
   end
 
@@ -123,8 +123,8 @@ RSpec.describe 'BookContent API', type: :request do
       delete "/api/v1/books_contents/#{book_content_id}", headers: auth_headers 
     }
 
-    it 'returns status code 204' do
-      expect(response).to have_http_status(204)
+    it 'returns status code NO_CONTENT' do
+      expect(response).to have_http_status(:no_content)
     end
   end
 end

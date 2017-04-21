@@ -8,19 +8,19 @@ module Api
 
 			def index
 				@profiles = Profile.all
-				respond_with @profiles, status: 200
+				respond_with @profiles, status: :ok
 			end
 
 			def show
-				respond_with get_profile, status: 200
+				respond_with get_profile, status: :ok
 			end
 
 			def update
 			  @profile = _current_profile.update(profile_params)
 				if @profile
-					respond_with @profile, status: 201
+					respond_with @profile, status: :created
 				else
-					respond_with errors: @book_content.errors.full_messages, status: 422
+					respond_with errors: @book_content.errors.full_messages, status: :unprocessable_entity
 				end
 			end
 
