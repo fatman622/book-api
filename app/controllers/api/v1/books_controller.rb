@@ -5,7 +5,7 @@ module Api
 			include DeviseTokenAuth::Concerns::SetUserByToken
 			before_action :authenticate_user!
 			before_action :get_book, only: [:show, :destroy]
-			respond_to :json
+			respond_to :json, :html
 			
 			def index
 				@books = Book.all
@@ -47,7 +47,7 @@ module Api
 			  else
 			    @books = Book.search params[:query]
 			  end
-			  respond_with @books, staus: :ok
+			  render json: @books, staus: :ok
 			end
 
 			private
@@ -56,7 +56,7 @@ module Api
 			end
 
 			def book_params
-				params.require(:book).permit(:author, :text, :available, :pages)
+				params.permit(:author, :text, :available, :pages)
 			end
 		end
 	end
