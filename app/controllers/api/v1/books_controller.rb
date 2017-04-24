@@ -35,7 +35,7 @@ module Api
 				end
 			end
 
-			def destroy
+			def destroy 
 				render json: get_book.destroy, status: :no_content
 			end
 
