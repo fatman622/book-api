@@ -236,7 +236,6 @@ DEPENDENCIES
   rack-cors
   rails (~> 5.0.2)
   rails_12factor
-  responders
   rspec-rails (~> 3.5)
   shoulda-matchers (~> 3.1)
   spring

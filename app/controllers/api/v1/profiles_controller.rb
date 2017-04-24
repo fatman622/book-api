@@ -4,7 +4,6 @@ module Api
 			include ProfilesDoc
 			include DeviseTokenAuth::Concerns::SetUserByToken
 			before_action :authenticate_user!
-			# respond_to :json
 
 			def index
 				@profiles = Profile.all
@@ -20,7 +19,7 @@ module Api
 				if @profile
 					render json: @profile, status: :created
 				else
-					render json: @profile, { errors: @book_content.errors.full_messages }, status: :unprocessable_entity
+					render json: { errors: @book_content.errors.full_messages }, status: :unprocessable_entity
 				end
 			end
 

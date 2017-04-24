@@ -18,8 +18,6 @@ Bundler.require(*Rails.groups)
 
 module BookApi
   class Application < Rails::Application
-    # Use the responders controller from the responders gem
-    config.app_generators.scaffold_controller :responders_controller
 
 
     # Settings in config/environments/* take precedence over those specified here.

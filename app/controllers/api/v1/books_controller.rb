@@ -3,7 +3,7 @@ module Api
 		class BooksController < ApplicationController
 			include BooksDoc
 			include DeviseTokenAuth::Concerns::SetUserByToken
-			before_action :authenticate_user!
+			# before_action :authenticate_user!
 			before_action :get_book, only: [:show, :destroy]
 			
 			def index
@@ -18,7 +18,7 @@ module Api
 				if @book.save
 					render json: @book, status: :created
 				else
-					render json: @book, { errors: @book.errors.full_messages }, status: :unprocessable_entity
+					render json: { errors: @book.errors.full_messages }, status: :unprocessable_entity
 				end
 			end
 
@@ -29,7 +29,7 @@ module Api
 			def update
 				@book = get_book.update(book_params)
 				if @book
-					render json: status: :created
+					render json: @book, status: :created
 				else
 					render json: { errors: @book.errors.full_messages }, status: :unprocessable_entity
 				end
