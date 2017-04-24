@@ -6,7 +6,9 @@ module Api
 			before_action :authenticate_user!
 
 			def index
-				@profiles = Profile.all
+				@profiles = Profile.all.select do |p|
+					p != _current_profile
+				end
 				render json: @profiles, status: :ok
 			end
 
