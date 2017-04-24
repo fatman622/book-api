@@ -4,10 +4,11 @@ module Api
 			include ProfilesDoc
 			include DeviseTokenAuth::Concerns::SetUserByToken
 			before_action :authenticate_user!
-			# respond_to :json
 
 			def index
-				@profiles = Profile.all
+				@profiles = Profile.all.select do |p|
+					p != _current_profile
+				end
 				render json: @profiles, status: :ok
 			end
 

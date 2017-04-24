@@ -5,40 +5,39 @@ module Api
 			include DeviseTokenAuth::Concerns::SetUserByToken
 			before_action :authenticate_user!
 			before_action :get_book, only: [:show, :destroy]
-			respond_to :json, :html
 			
 			def index
 				@books = Book.all
 				@books = @books.author(params[:author].downcase) if params[:author].present?
 				@books = @books.available(params[:available]) if params[:available].present?
-				respond_with @books, status: :ok
+				render json: @books, status: :ok
 			end
 
 			def create
 				@book = Book.create(book_params)
 				if @book.save
-					respond_with @book, status: :created
+					render json: @book, status: :created
 				else
-					respond_with @book, errors: @book.errors.full_messages, status: :unprocessable_entity
+					render json: @book, { errors: @book.errors.full_messages }, status: :unprocessable_entity
 				end
 			end
 
 			def show
-				respond_with get_book, status: :ok
+				render json: get_book, status: :ok
 			end
 
 			def update
 				@book = get_book.update(book_params)
 				if @book
-					respond_with :api, :v1, status: :created
+					render json: status: :created
 				else
-					respond_with :api, :v1, errors: @book.errors.full_messages, status: :unprocessable_entity
+					render json: { errors: @book.errors.full_messages }, status: :unprocessable_entity
 				end
 			end
 
 			def destroy
 				@book.destroy
-				respond_with :api, :v1, status: :no_content
+				render json: status: :no_content
 			end
 
 			def search
