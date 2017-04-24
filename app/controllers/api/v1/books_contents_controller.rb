@@ -4,7 +4,6 @@ module Api
       include BooksContentsDoc
       include DeviseTokenAuth::Concerns::SetUserByToken
       before_action :authenticate_user!
-      # respond_to :json
       
       def index
         @books_contents = BookContent.all
