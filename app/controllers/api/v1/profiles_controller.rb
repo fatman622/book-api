@@ -13,7 +13,12 @@ module Api
 			end
 
 			def show
-				render json: get_profile, status: :ok
+				if params[:id]=='current'
+					@profile = _current_profile
+				else
+					@profile = get_profile
+				end
+				render json: @profile, status: :ok
 			end
 
 			def update
