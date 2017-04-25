@@ -98,8 +98,8 @@ RSpec.describe 'Books API', type: :request do
         put "/api/v1/books/#{book_id}", params: valid_attributes, headers: auth_headers 
       }
 
-      it 'returns status code 204' do
-        expect(response).to have_http_status(:no_content)
+      it 'returns status code 201' do
+        expect(response).to have_http_status(:created)
       end
     end
   end

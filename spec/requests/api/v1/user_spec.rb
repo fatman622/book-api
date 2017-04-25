@@ -60,7 +60,7 @@ RSpec.describe 'User API', type: :request do
       json = JSON.parse(response.body)
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json.size).to eq(11)
+      expect(json.size).to eq(10)
     end
 
     it 'returns status code OK' do
@@ -91,7 +91,7 @@ RSpec.describe 'User API', type: :request do
         }
 
         it 'returns status code NO_CONTENT' do
-          expect(response).to have_http_status(:no_content)
+          expect(response).to have_http_status(:created)
         end
       end
     end
