@@ -90,7 +90,7 @@ RSpec.describe 'Books API', type: :request do
    # Test suite for PUT /books
   describe 'PUT /books/:id' do
     # valid payload
-    let(:valid_attributes) { {  author: 'Oleg', text: 'Learn Elm', available: true, pages: '3' } }
+    let(:valid_attributes) { { author: 'Oleg', text: 'Learn Elm', available: true, pages: '3' } }
 
     context 'when the request is valid' do
       before {

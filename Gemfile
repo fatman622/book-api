@@ -17,7 +17,8 @@ gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
 gem 'devise_token_auth'
 gem 'omniauth'
-gem 'paperclip', '~> 5.0.0'
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 
 group :production do
   gem 'rails_12factor'
