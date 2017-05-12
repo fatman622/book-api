@@ -36,7 +36,7 @@ module ProfilesDoc
     description <<-EOS
       == Update profile user
       Is used for updating profile
-        curl -v localhost:5000/api/v1/profiles/1 -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -d '{"first_name": "ZZZZ", "last_name": "zzzzz"}'
+        curl http://localhost:5000/api/v1/profiles/1 -X PUT -v -F first_name='Oleg' -F last_name='Babiy' -F file=@download.jpg
     EOS
   param_group :main_params
   def update; end
