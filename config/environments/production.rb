@@ -47,16 +47,22 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "book-api_#{Rails.env}"
+
+
   config.action_mailer.perform_caching = false
-  
-   config.action_mailer.smtp_settings = {
-  :address => "email-smtp.us-east-1.amazonaws.com",
-  :port => 587,
-  :user_name => ENV["AKIAITP36HXJ23ZC47JQ"], #Your SMTP user
-  :password => ENV["AmN4U5uz1AKX2NbtZAgA82A6sW0Oo3SEyyHdQjnqUjnr"], #Your SMTP password
-  :authentication => :login,
-  :enable_starttls_auto => true
-}
+
+  config.action_mailer.default_url_options = { host: "book-api-fatman622.herokuapp.com" }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address: "email-smtp.us-east-1.amazonaws.com",
+    :port: 587,
+    :domain: "book-api-fatman622.herokuapp.com",
+    :authentication: :login,
+    :user_name: "AKIAITP36HXJ23ZC47JQ",
+    :password: "AmN4U5uz1AKX2NbtZAgA82A6sW0Oo3SEyyHdQjnqUjnr",
+    :enable_starttls_auto => true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
