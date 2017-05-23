@@ -55,12 +55,12 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address: "email-smtp.us-east-1.amazonaws.com",
-    :port: 587,
-    :domain: "book-api-fatman622.herokuapp.com",
-    :authentication: :login,
-    :user_name: "AKIAITP36HXJ23ZC47JQ",
-    :password: "AmN4U5uz1AKX2NbtZAgA82A6sW0Oo3SEyyHdQjnqUjnr",
+    :address => "email-smtp.us-east-1.amazonaws.com",
+    :port => 587,
+    :domain => "book-api-fatman622.herokuapp.com",
+    :authentication => :login,
+    :user_name => "AKIAITP36HXJ23ZC47JQ",
+    :password => "AmN4U5uz1AKX2NbtZAgA82A6sW0Oo3SEyyHdQjnqUjnr",
     :enable_starttls_auto => true
   }
 
