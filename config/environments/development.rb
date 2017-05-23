@@ -35,8 +35,8 @@ Rails.application.configure do
     port: 587,
     domain: "localhost:5000",
     authentication: :login,
-    user_name: ENV["SES_USER_NAME"],
-    password: ENV["SES_PASSWORD"],
+    user_name: ENV.fetch("SES_USER_NAME"),
+    password: ENV.fetch("SES_PASSWORD"),
     enable_starttls_auto: true
   }
 
