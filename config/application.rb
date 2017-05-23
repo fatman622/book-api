@@ -29,9 +29,9 @@ module BookApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.autoload_paths << Rails.root.join('lib')
-  config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
-     config.middleware.use Rack::Cors do
+    config.middleware.use Rack::Cors do
       allow do
         origins '*'
         resource '*',
@@ -39,7 +39,6 @@ module BookApi
           :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
           :methods => [:get, :post, :options, :delete, :put]
       end
-    end
-    
+    end  
   end
 end

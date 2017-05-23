@@ -17,6 +17,7 @@ module Api
 				@book = Book.create(book_params)
 				if @book.save
 					render json: @book, status: :created
+					MyMailer.send_email(name: 'My first message', phone: '2323232', email: 'olegbabiy.ob@gmail.com', message: 'My message').deliver
 				else
 					render json: { errors: @book.errors.full_messages }, status: :unprocessable_entity
 				end
