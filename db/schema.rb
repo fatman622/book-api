@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419161306) do
+ActiveRecord::Schema.define(version: 20170524091327) do
 
   create_table "book_contents", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -21,10 +21,14 @@ ActiveRecord::Schema.define(version: 20170419161306) do
   create_table "books", force: :cascade do |t|
     t.string   "author"
     t.string   "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.boolean  "available"
     t.integer  "pages"
+    t.string   "book_content_file_name"
+    t.string   "book_content_content_type"
+    t.integer  "book_content_file_size"
+    t.datetime "book_content_updated_at"
   end
 
   create_table "profiles", force: :cascade do |t|

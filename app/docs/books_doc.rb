@@ -6,6 +6,7 @@ module BooksDoc
     param :text, String, desc: 'The text book. '
     param :available, [true, false] , desc: 'Available book.'
     param :pages, Integer, desc: 'The count of pages. '
+    param :book_content_file_name, String, desc: 'File name from attachment '
   end
 
   api :GET, '/books', 'All books '
@@ -32,7 +33,7 @@ module BooksDoc
   description <<-EOS
     == Create Book article
     Is used for creating book
-      curl -v localhost:5000/api/v1/books -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"author": "Star Wars: A New Hope", "text": "asdasd", "available": "false", "pages": "23"}'
+      curl http://localhost:5000/api/v1/books -v -F author='Oleg Babiy' -F text='blala' -F available='true' -F pages=3 -F book_content=@example.txt
     EOS
   param_group :main_params
   def create; end  
@@ -50,7 +51,7 @@ module BooksDoc
     description <<-EOS
       == Update book article
     Is used for updating book
-      curl -v localhost:5000/api/v1/books/1 -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -d '{"author": "Star Wars: A New Hope", "text": "asdasd", "available": "false", "pages": "23"}'
+      curl http://localhost:5000/api/v1/books -v -F author='Oleg Babiy' -F text='blala' -F available='true' -F pages=3 -F book_content=@example.txt
     EOS
   param_group :main_params
   def update; end

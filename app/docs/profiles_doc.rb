@@ -5,6 +5,7 @@ module ProfilesDoc
     param :first_name, String, desc: 'The field name user. '
     param :last_name, String, desc: 'The text last name user. '
     param :user_id, Integer, desc: 'Id user. '
+    param :avatar, String, desc: 'User avatar'
   end
 
   api :GET, '/profiles', 'All profiles'
