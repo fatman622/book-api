@@ -3,7 +3,7 @@ module Api
 		class BooksController < ApplicationController
 			include BooksDoc
 			include DeviseTokenAuth::Concerns::SetUserByToken
-			# before_action :authenticate_user!
+			before_action :authenticate_user!
 			before_action :get_book, only: [:show, :destroy]
 			
 			def index
@@ -17,7 +17,7 @@ module Api
 				@book = Book.create(book_params)
 				if @book.save
 					render json: @book, status: :created
-					MyMailer.send_email(name: 'My first message', phone: '2323232', email: 'olegbabiy.ob@gmail.com', message: 'My message').deliver
+					MyMailer.send_email(name: 'My first message', phone: '2323232', email: 'olegbabiy.ob@gmail.com', message: params[:text]).deliver
 				else
 					render json: { errors: @book.errors.full_messages }, status: :unprocessable_entity
 				end
