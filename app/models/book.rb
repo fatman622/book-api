@@ -6,7 +6,7 @@ class Book < ApplicationRecord
   include Elasticsearch::Model::Callbacks
   include ElasticMyAnalyzer
 
-	validates :text, :author, :pages, presence: true
+	validates :text, :author, :pages, :genre, :name, :number, presence: true
 	validates :available, inclusion: { in: [ true, false ] }
 	# has_attached_file :book_content
 	# validates :book_content, attachment_content_type: { content_type: ['text/plain']}

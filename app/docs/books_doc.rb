@@ -2,11 +2,14 @@ module BooksDoc
 	extend Apipie::DSL::Concern
 
 	def_param_group :main_params do
-    param :author, String, desc: 'The field note author book. '
-    param :text, String, desc: 'The text book. '
+    param :author, String, desc: 'The field note author book. ', :required => true 
+    param :text, String, desc: 'The text book. ', :required => true 
     param :available, [true, false] , desc: 'Available book.'
-    param :pages, Integer, desc: 'The count of pages. '
-    param :book_content_file_name, String, desc: 'File name from attachment '
+    param :pages, Integer, desc: 'The count of pages. ', :required => true 
+    param :genre, String, desc: 'The book genree ', :required => true 
+    param :name, String, desc: 'The book name. ', :required => true 
+    param :number, Integer, desc: 'Number. ', :required => true 
+    param :book_content, File, desc: 'File attachment '
   end
 
   api :GET, '/books', 'All books '
@@ -25,15 +28,13 @@ module BooksDoc
         curl -v localhost:5000/api/v1/books/search -X GET -H "Accept: application/json" -H "Content-Type: application/json" -d '{"query": "Oleg"}'    
     EOS
   param_group :main_params
-  param :created_at, Date, desc: 'Created at'
-  param :updated_at, Date, desc: 'Updated at'
   def index; end
 
   api :POST, '/books', 'Create Book'
   description <<-EOS
     == Create Book article
     Is used for creating book
-      curl http://localhost:5000/api/v1/books -v -x POST -F author='Oleg Babiy' -F text='blala' -F available='true' -F pages=3 -F book_content=@example.txt
+      curl http://localhost:5000/api/v1/books -v -X POST -F author='Oleg Babiy' -F text='blala' -F available='true' -F pages=3 -F book_content=@example.txt
     EOS
   param_group :main_params
   def create; end  
