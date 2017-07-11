@@ -8,8 +8,8 @@ class Book < ApplicationRecord
 
 	validates :text, :author, :pages, presence: true
 	validates :available, inclusion: { in: [ true, false ] }
-	has_attached_file :book_content
-	validates :book_content, attachment_content_type: { content_type: ['text/plain']}
+	# has_attached_file :book_content
+	# validates :book_content, attachment_content_type: { content_type: ['text/plain']}
 	
 	scope :author, lambda {|author| where("LOWER(author) like ?", "#{author}%")}
 	scope :available, -> (available) { where available: available }
